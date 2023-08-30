@@ -1,0 +1,25 @@
+.item{
+    background-color: rgb(63, 63, 63);
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.item h2{
+    margin-bottom: 5px;
+    color: white;
+}
+
+button {
+    background-color: rgb(210, 149, 195);
+    border: none;
+    outline: none;
+    color: aliceblue;
+    margin-top: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: rgb(158, 102, 144);
+}
