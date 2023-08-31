@@ -1,20 +1,21 @@
 import React from "react";
 import styles from "./RecipeItem.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { actions } from "../favorites/favoritesSlice";
+import { useActions } from "../../favorites/hooks/useActions";
+import { useFavorites } from "../../favorites/hooks/useFavorites";
 
 const RecipeItem = ({ recipe }) => {
-  const { favorites } = useSelector((state) => state);
+  
+  const {favorites} = useFavorites()
 
-  const dispatch = useDispatch();
+  const { toggleFavorites } = useActions();
 
   const isExist = favorites.some((r) => r.id === recipe.id);
 
   return (
     <div className={styles.item}>
-      <img src="" alt="" />
+      {/* <img src="" alt="" /> */}
       <h2>{recipe.name}</h2>
-      <button onClick={() => dispatch(actions.toggleFavorites(recipe))}>
+      <button onClick={() => toggleFavorites(recipe)}>
         {isExist ? "Remove From" : "Add to"} favorites
       </button>
     </div>
