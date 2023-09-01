@@ -13,7 +13,7 @@ const RecipeItem = ({ recipe }) => {
 
   return (
     <div className={styles.item}>
-      {/* <img src="" alt="" /> */}
+      <img src={recipe.image} alt={recipe.name} width={100} />
       <h2>{recipe.name}</h2>
       <button onClick={() => toggleFavorites(recipe)}>
         {isExist ? "Remove From" : "Add to"} favorites

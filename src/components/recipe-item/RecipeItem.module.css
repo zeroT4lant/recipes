@@ -23,3 +23,7 @@ button {
 button:hover {
     background-color: rgb(158, 102, 144);
 }
+
+.item img {
+    border-radius: 5px;
+}
