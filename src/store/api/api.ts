@@ -12,7 +12,7 @@ export const api = createApi({
     endpoints: builder => ({//получение рецептов, первый эдпоинт на GET
         getRecipes: builder.query<IRecipe[],string>({
             query: (queryTerm) => `/?_sort=id&_order=desc&q=${queryTerm}`,
-            providesTags: (result, error, queryTerm) => [{
+            providesTags: (_result, _error, queryTerm) => [{
                 type : 'Recipe',
                 id: queryTerm
             }]
