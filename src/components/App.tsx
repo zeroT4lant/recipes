@@ -1,23 +1,42 @@
+import React, { useState } from "react";
 import { useGetRecipesQuery } from "../store/api/api";
 import CreateRecipe from "./create-recipe/CreateRecipe";
 import Header from "./header/Header";
 import RecipeItem from "./recipe-item/RecipeItem";
-import User from "./user/User";
 
-const userId = null
+// const userId = null
 
 function App() {
-  const { isLoading, data } = useGetRecipesQuery(//получение из базы данных
+  const [searchTerm,setSearchTerm] = useState('')
+
+  const [queryTerm,setQueryTerm] = useState('')
+
+  const handleSearch = () => {
+    setQueryTerm(searchTerm)
+  }
+
+  const { isLoading, data } = useGetRecipesQuery(queryTerm);
+
+  //выше внутри скобок useGetRecipesQuery
+  //получение из базы данных
     // undefined,{ //проверка на условие в хуке
     //   skip: !userId,
     // }
-  );
 
   return (
     <section>
       <Header />
       <CreateRecipe />
       {/* <User/> */}
+      <div>
+        <p>If you wanna find:</p>
+        <input
+        type="search"
+        value={searchTerm}
+        onChange={e => setSearchTerm(e.target.value)}
+        placeholder="Enter search term"/>
+        <button onClick={handleSearch}>Search</button>
+      </div>
       <div>
         {isLoading ? (
           <div>Loading...</div>

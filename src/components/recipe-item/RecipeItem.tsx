@@ -2,8 +2,13 @@ import React from "react";
 import styles from "./RecipeItem.module.css";
 import { useActions } from "../../favorites/hooks/useActions";
 import { useFavorites } from "../../favorites/hooks/useFavorites";
+import { IRecipe } from "../../types/recipe.types";
 
-const RecipeItem = ({ recipe }) => {
+interface IRecipeItem {
+  recipe: IRecipe
+}
+
+const RecipeItem = ({ recipe } : IRecipeItem) => {
   
   const {favorites} = useFavorites()
 

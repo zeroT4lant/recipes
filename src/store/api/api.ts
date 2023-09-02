@@ -1,4 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
+import { IRecipe } from '../../types/recipe.types'
 
 const API_URL = 'http://localhost:4300/recipes'
 
@@ -9,10 +10,11 @@ export const api = createApi({
         baseUrl : API_URL
     }),
     endpoints: builder => ({//получение рецептов, первый эдпоинт на GET
-        getRecipes: builder.query({
-            query: () => '/?_sort=id&_order=desc',
-            providesTags: () => [{
-                type : 'Recipe'
+        getRecipes: builder.query<IRecipe[],string>({
+            query: (queryTerm) => `/?_sort=id&_order=desc&q=${queryTerm}`,
+            providesTags: (result, error, queryTerm) => [{
+                type : 'Recipe',
+                id: queryTerm
             }]
         })
     })

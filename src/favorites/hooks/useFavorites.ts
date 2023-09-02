@@ -1,7 +1,8 @@
-import { useSelector } from "react-redux";
+import { useTypedSelector } from "./useTypedSelector";
 
 export const useFavorites = () => {
-    const {favorites} = useSelector((state) => state);//вытаскиваем данные из стейта
+    const {favorites} = useTypedSelector((state) => state);//вытаскиваем данные из стейта
+    //супер типизированный хук
 
     return {favorites}//возвращаем
 }
